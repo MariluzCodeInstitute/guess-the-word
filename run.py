@@ -41,7 +41,9 @@ def get_player_input():
 
 def validate_input(guess):
     if len(guess) != 5:
-        print(f"Your guess must be a 5-letter word. You provided a {len(guess)}-letter word")
+        print(f"Your word must be a 5-letter word. You provided a {len(guess)}-letter word")
+    elif guess.isalpha() == False:
+        print("Your word must contain only letters")
     else:
         print("Valid input")
 
