@@ -1,5 +1,6 @@
 import random
 
+guess_list = []
 MAX_ATTEMPTS = 6
 
 def display_intro():
@@ -36,17 +37,19 @@ def display_grid():
 
 def get_player_input():
     player_guess = input("Enter your 5-letter word: ").strip().upper()
-    print(player_guess)
     validate_input(player_guess)
 
 def validate_input(guess):
     if len(guess) != 5:
         print(f"Your word must be a 5-letter word. You provided a {len(guess)}-letter word")
+        get_player_input()
     elif guess.isalpha() == False:
         print("Your word must contain only letters")
+        get_player_input()
     else:
         print("Valid input")
-
+        guess_list.append(guess)
+    
 display_intro()
 choose_random_word()
 display_grid()
