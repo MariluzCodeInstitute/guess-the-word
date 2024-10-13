@@ -7,7 +7,7 @@ def display_intro():
     Diplays the welcome message and instructions for the game    
     """
     print("Welcome to Guess The Word!\n")
-    print("You have 6 attempts to guess a 5-character-long word\n")
+    print("You have 6 attempts to guess a 5-letter word\n")
     print(
         "On each attempt, if any of letters are in the right position, "
         "they will be green")
@@ -34,7 +34,11 @@ def display_grid():
         print(' '.join(row))
         print()
 
+def get_player_input():
+    player_guess = input("Enter your 5-letter word: ").upper()
+    print(player_guess)
 
 display_intro()
 choose_random_word()
 display_grid()
+get_player_input()
