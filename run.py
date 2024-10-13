@@ -9,6 +9,7 @@ MAX_ATTEMPTS = 6
 grid = [['_' for _ in range(5)] for _ in range(MAX_ATTEMPTS)]
 word_list = ['apple', 'baker', 'crane', 'delta', 'eagle']
 guess_list = []
+attempt = 0
 
 class Word:
     """
@@ -74,7 +75,8 @@ def validate_input(guess):
         update_grid(guess)
 
 def update_grid(guess):
-    grid[0] = guess
+    grid[attempt] = guess
+    attempt +=1
     display_grid()
 
 
