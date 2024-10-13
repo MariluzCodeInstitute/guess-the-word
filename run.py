@@ -46,6 +46,9 @@ def validate_input(guess):
     elif guess.isalpha() == False:
         print("Your word must contain only letters")
         get_player_input()
+    elif guess in guess_list:
+        print(f"You already tried the word {guess}. Please choose another word")
+        get_player_input()
     else:
         print("Valid input")
         guess_list.append(guess)
