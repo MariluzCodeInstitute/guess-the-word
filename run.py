@@ -1,5 +1,7 @@
 import random
 
+MAX_ATTEMPTS = 6
+
 def display_intro():
     """
     Diplays the welcome message and instructions for the game    
@@ -22,7 +24,17 @@ def choose_random_word():
     word_list = ['apple', 'baker', 'crane', 'delta', 'eagle']
     word = random.choice(word_list).upper()
 
-    print(word)
+    return word
+
+def display_grid():
+    print("Guess The Word:\n")
+    grid = [['_' for _ in range(5)] for _ in range(MAX_ATTEMPTS)]
+    
+    for row in grid:
+        print(' '.join(row))
+        print()
+
 
 display_intro()
 choose_random_word()
+display_grid()
