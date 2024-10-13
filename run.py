@@ -5,9 +5,10 @@ from nltk.corpus import words
 nltk.download('words')
 dictionary = set(words.words())
 
+MAX_ATTEMPTS = 6
+grid = [['_' for _ in range(5)] for _ in range(MAX_ATTEMPTS)]
 word_list = ['apple', 'baker', 'crane', 'delta', 'eagle']
 guess_list = []
-MAX_ATTEMPTS = 6
 
 class Word:
     """
@@ -23,7 +24,6 @@ def display_grid():
     https://stackoverflow.com/questions/77174842/how-to-print-a-grid-with-multiple-columns-in-the-terminal-using-for-loops
     """
     print("Guess The Word:\n")
-    grid = [['_' for _ in range(5)] for _ in range(MAX_ATTEMPTS)]
 
     for row in grid:
         print(' '.join(row))
@@ -71,7 +71,13 @@ def validate_input(guess):
     else:
         print("Valid word!")
         guess_list.append(guess)
-    
+        update_grid(grid, guess)
+
+def update_grid(grid, guess):
+    grid[0] = guess
+    display_grid()
+
+
 display_intro()
 display_grid()
 get_player_input()
