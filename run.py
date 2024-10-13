@@ -35,8 +35,15 @@ def display_grid():
         print()
 
 def get_player_input():
-    player_guess = input("Enter your 5-letter word: ").upper()
+    player_guess = input("Enter your 5-letter word: ").strip().upper()
     print(player_guess)
+    validate_input(player_guess)
+
+def validate_input(guess):
+    if len(guess) != 5:
+        print(f"Your guess must be a 5-letter word. You provided a {len(guess)}-letter word")
+    else:
+        print("Valid input")
 
 display_intro()
 choose_random_word()
