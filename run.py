@@ -50,7 +50,7 @@ def get_player_input():
     """
     Asks the player to enter a word/guess and runs validations on it
     """
-    player_guess = input("Enter your 5-letter word: ").strip().upper()
+    player_guess = input("Enter a 5-letter word: ").strip().upper()
     validate_input(player_guess)
 
 def validate_input(guess):
@@ -75,10 +75,13 @@ def validate_input(guess):
         update_grid(guess)
 
 def update_grid(guess):
+    global attempt
     grid[attempt] = guess
     attempt +=1
     display_grid()
 
+    if attempt < MAX_ATTEMPTS:
+        get_player_input()
 
 display_intro()
 display_grid()
