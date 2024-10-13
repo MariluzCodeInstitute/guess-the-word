@@ -1,3 +1,5 @@
+import random
+
 def display_intro():
     """
     Diplays the welcome message and instructions for the game    
@@ -14,5 +16,13 @@ def display_intro():
     print("If the letter is not in the word, it will not be coloured\n")
     print("Good luck!")
 
-display_intro()
 
+
+def choose_random_word():
+    word_list = ['apple', 'baker', 'crane', 'delta', 'eagle']
+    word = random.choice(word_list).upper()
+
+    print(word)
+
+display_intro()
+choose_random_word()
