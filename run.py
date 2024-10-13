@@ -71,9 +71,9 @@ def validate_input(guess):
     else:
         print("Valid word!")
         guess_list.append(guess)
-        update_grid(grid, guess)
+        update_grid(guess)
 
-def update_grid(grid, guess):
+def update_grid(guess):
     grid[0] = guess
     display_grid()
 
