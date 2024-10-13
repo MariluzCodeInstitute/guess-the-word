@@ -1,4 +1,9 @@
 import random
+import nltk
+from nltk.corpus import words
+
+nltk.download('words')
+word_list = set(words.words())
 
 guess_list = []
 MAX_ATTEMPTS = 6
@@ -41,10 +46,13 @@ def get_player_input():
 
 def validate_input(guess):
     if len(guess) != 5:
-        print(f"Your word must be a 5-letter word. You provided a {len(guess)}-letter word")
+        print(f"Your word must be a 5-letter word. You provided a {len(guess)}-letter word. Please try again")
         get_player_input()
     elif guess.isalpha() == False:
-        print("Your word must contain only letters")
+        print("Your word must contain only letters. Please try again.")
+        get_player_input()
+    elif guess.lower() not in word_list:
+        print(f"{guess} is not an English word. Please try again.")
         get_player_input()
     elif guess in guess_list:
         print(f"You already tried the word {guess}. Please choose another word")
