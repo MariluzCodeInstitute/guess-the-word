@@ -72,7 +72,7 @@ class Game:
             if self.attempt < self.MAX_ATTEMPTS:
                 self.get_player_input()
             else:
-                print(f"Sorry, the word was {self.target_word}.")
+                print(f"Sorry, the word was {self.target_word.upper()}.")
 
 
 def display_intro():
