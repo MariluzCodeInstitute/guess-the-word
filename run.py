@@ -7,6 +7,9 @@ nltk.download('words')
 dictionary = set(words.words())
 
 colorama.init(autoreset=True)
+green = Back.GREEN
+yellow = Back.YELLOW
+grey = Back.LIGHTBLACK_EX
 
 word_list = ['apple', 'baker', 'crane', 'delta', 'eagle'] # Small list for testing purposes
 
@@ -70,6 +73,7 @@ class Game:
 
     def check_guess(self, guess):
         if guess.lower() == self.target_word:
+
             print("Congratulations! Your guess is right!")
         else:
             if self.attempt < self.MAX_ATTEMPTS:
