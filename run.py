@@ -1,9 +1,12 @@
 import random
 import nltk
 from nltk.corpus import words
+from colorama import Fore, Back, Style
 
 nltk.download('words')
 dictionary = set(words.words())
+
+colorama.init(autoreset=True)
 
 word_list = ['apple', 'baker', 'crane', 'delta', 'eagle'] # Small list for testing purposes
 
