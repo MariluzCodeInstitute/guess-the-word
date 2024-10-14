@@ -1,6 +1,7 @@
 import random
 import nltk
 from nltk.corpus import words
+import colorama
 from colorama import Fore, Back, Style
 
 nltk.download('words')
@@ -65,15 +66,23 @@ class Game:
             self.update_grid(guess)
     
     def update_grid(self, guess):
-        self.grid[self.attempt] = guess
+        if guess.lower() == self.target_word:
+            self.grid[self.attempt] = guess
+            print(green + "Congratulations! Your guess is right!")
+            print()
+        else:
+            self.grid[self.attempt] = guess
+
         self.attempt +=1
         self.display_grid()
 
-        self.check_guess(guess)
+        if self.attempt < self.MAX_ATTEMPTS:
+            self.get_player_input()
+        else:
+            print(f"Sorry, the word was {self.target_word.upper()}.")
 
     def check_guess(self, guess):
         if guess.lower() == self.target_word:
-
             print("Congratulations! Your guess is right!")
         else:
             if self.attempt < self.MAX_ATTEMPTS:
