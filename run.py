@@ -65,16 +65,27 @@ class Game:
             self.guess_list.append(guess)
             self.update_grid(guess)
     
-    def update_grid(self, guess):
-        if guess.lower() == self.target_word:
-            self.grid[self.attempt] = guess
-            print(green + "Congratulations! Your guess is right!")
-            print()
+    def colour_letter(self, letter, index):
+        if letter == self.target_word[index]:
+            return f"{green}{letter}{Style.RESET_ALL}"
+        elif letter in self.target_word:
+            return f"{yellow}{letter}{Style.RESET_ALL}"
         else:
-            self.grid[self.attempt] = guess
+            return f"{green}{letter}{Style.RESET_ALL}"
+    
+    def update_grid(self, guess):
+        coloured_word = [self.colour_letter(guess[i], i) for i in range(5)]
+        self.grid[self.attempt] = coloured_word
+        # if guess.lower() == self.target_word:
+        #     self.grid[self.attempt] = guess
+        #     print(green + "Congratulations! Your guess is right!")
+        #     print()
+        # else:
+        #     self.grid[self.attempt] = guess
 
         self.attempt +=1
         self.display_grid()
+        self.check_guess(guess)
 
         if self.attempt < self.MAX_ATTEMPTS:
             self.get_player_input()
