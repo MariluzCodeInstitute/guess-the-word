@@ -26,21 +26,31 @@ class Game:
         self.attempt = 0
         self.guess_list = []
     
-    def display_grid(self):
+    def display_grid(self, colour_list):
         """
         Function to display a 5x6 grid in the terminal
         Code inspired from suggestions on StackOverflow:
         https://stackoverflow.com/questions/77174842/how-to-print-a-grid-with-multiple-columns-in-the-terminal-using-for-loops
         """
         print("Guess The Word:\n")
+        # for row_index, row in enumerate(self.grid):
+        #     for col_index, letter in enumerate(row):
+        #         colour = colour_list[col_index]
+        #         print(f"{colour}{letter}{Style.RESET_ALL}")
 
         for row in self.grid:
             print(' '.join(row))
+
+        # for row in self.grid:
+        #     for letter in row:
+        #         print(letter, end=' ')
+        #         print()
     
     def get_player_input(self):
         """
         Asks the player to enter a word/guess and runs validations on it
         """
+        print(self.target_word)
         player_guess = input("Enter a 5-letter word: ").strip().upper()
         self.validate_input(player_guess)
 
@@ -65,17 +75,33 @@ class Game:
             self.guess_list.append(guess)
             self.update_grid(guess)
     
-    def colour_letter(self, letter, index):
-        if letter == self.target_word[index]:
-            return f"{green}{letter}{Style.RESET_ALL}"
-        elif letter in self.target_word:
-            return f"{yellow}{letter}{Style.RESET_ALL}"
-        else:
-            return f"{green}{letter}{Style.RESET_ALL}"
+    def assign_colours(self, letter, index):
+        # guess_letters = guess.split()
+        # coloured_word = []
+
+        # for index, letter in enumerate(guess_letters):
+            if letter.lower() == self.target_word[index]:
+                # coloured_word.append(f"{green}{letter}{Style.RESET_ALL}")
+                return "green"
+            elif letter.lower() in self.target_word:
+                # coloured_word.append(f"{yellow}{letter}{Style.RESET_ALL}")
+                return "yellow"
+            else:
+                # coloured_word.append(f"{grey}{guess_letter}{Style.RESET_ALL}")
+                return "grey"
+
     
     def update_grid(self, guess):
-        coloured_word = [self.colour_letter(guess[i], i) for i in range(5)]
-        self.grid[self.attempt] = coloured_word
+        colours_list = []
+
+        for index, guess_letter in enumerate(guess):
+            colour = self.assign_colours(guess_letter, index)
+            colours_list.append(colour)
+         
+
+        self.grid[self.attempt] = guess
+        # print(self.grid[self.attempt][2])
+        # print(colours_list)
         # if guess.lower() == self.target_word:
         #     self.grid[self.attempt] = guess
         #     print(green + "Congratulations! Your guess is right!")
@@ -84,7 +110,7 @@ class Game:
         #     self.grid[self.attempt] = guess
 
         self.attempt +=1
-        self.display_grid()
+        self.display_grid(colours_list)
         self.check_guess(guess)
 
         if self.attempt < self.MAX_ATTEMPTS:
@@ -121,6 +147,6 @@ def display_intro():
 
 display_intro()
 game = Game()
-game.display_grid()
+# game.display_grid()
 game.get_player_input()
 
