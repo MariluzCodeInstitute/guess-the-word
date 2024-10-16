@@ -81,7 +81,6 @@ class Game:
         global coloured_words_list
         coloured_word = self.assign_colours(guess)
         coloured_words_list.append(coloured_word)
-        # print(coloured_word)
 
         for word in coloured_words_list:
             print(word)
@@ -99,7 +98,7 @@ class Game:
                 self.get_player_input()
         else:
             print(f"Sorry, the word was {self.target_word.upper()}.")
-            
+
 
 def display_intro():
     """
