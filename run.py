@@ -1,4 +1,5 @@
 import random
+from word_list import word_list # Import the list of words for the game
 import nltk
 from nltk.corpus import words
 import colorama
@@ -9,7 +10,6 @@ dictionary = set(words.words())
 
 colorama.init(autoreset=True)
 
-word_list = ['apple', 'baker', 'crane', 'delta', 'eagle'] # Small list for testing purposes
 coloured_words_list = []
 
 class Game:
