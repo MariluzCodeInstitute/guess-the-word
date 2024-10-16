@@ -83,7 +83,7 @@ class Game:
 
         for word in coloured_words_list:
             print(word)
-            print()
+            print() # Printing extra line so that is easier to see
 
         self.attempt +=1
         self.check_guess(guess)
@@ -137,7 +137,12 @@ def display_intro():
     print("Good luck!")
 
 
-display_intro()
-game = Game()
-game.get_player_input()
+def main():
+    """
+    Main function to run the entire game
+    """
+    display_intro()
+    game = Game()
+    game.get_player_input()
 
+main()
