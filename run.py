@@ -65,9 +65,9 @@ class Game:
         else:
             print("Valid word!")
             self.guess_list.append(guess)
-            self.assign_colours(guess)
+            self.update_game_state(guess)
     
-    def assign_colours(self, guess):
+    def colour_and_print_word(self, guess):
         """
         This function handles the colours that get assigned to each letter
         and prints the word to the terminal afterwards
@@ -88,13 +88,15 @@ class Game:
         print(coloured_word)
 
         
-    def update_grid(self, guess):
-
-        self.assign_colours(guess)
-
+    def update_game_state(self, guess):
+        """
+        In this function we handle the colouring of the word, check the word
+        and give feedback to the user
+        """
+        self.colour_and_print_word(guess)
 
         self.attempt +=1
-        # self.display_grid()
+
         self.check_guess(guess)
 
         if self.attempt < self.MAX_ATTEMPTS:
