@@ -8,9 +8,6 @@ nltk.download('words')
 dictionary = set(words.words())
 
 colorama.init(autoreset=True)
-green = Back.GREEN
-yellow = Back.YELLOW
-grey = Back.LIGHTBLACK_EX
 
 word_list = ['apple', 'baker', 'crane', 'delta', 'eagle'] # Small list for testing purposes
 
