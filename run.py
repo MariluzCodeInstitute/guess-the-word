@@ -1,12 +1,12 @@
 import random
-from word_list import word_list # Import the list of words for the game
+from word_list import word_list # Import the list of words for the game from word_list.py
 import nltk
 from nltk.corpus import words
 import colorama
 from colorama import Fore, Back, Style
 
 nltk.download('words')
-dictionary = set(words.words())
+dictionary = set(words.words()) # Dictionary to verify English words
 
 colorama.init(autoreset=True)
 
@@ -19,6 +19,9 @@ class Game:
     MAX_ATTEMPTS = 6 # This number will not change so it makes sense that is a constant
 
     def __init__(self):
+        """
+        Constructor function to initialise the variables that the game will use
+        """
         self.target_word = random.choice(word_list)
         self.attempt = 0
         self.guess_list = []
