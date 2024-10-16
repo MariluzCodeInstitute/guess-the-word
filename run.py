@@ -20,7 +20,6 @@ class Game:
 
     def __init__(self):
         self.target_word = random.choice(word_list)
-        # self.grid = [['_' for _ in range(5)] for _ in range(self.MAX_ATTEMPTS)]
         self.attempt = 0
         self.guess_list = []
 
@@ -93,11 +92,29 @@ class Game:
     def check_guess(self, guess):
         if self.attempt < self.MAX_ATTEMPTS:
             if guess.lower() == self.target_word:
-                print("Congratulations! Your guess is right!")  
+                print("Congratulations! Your guess is right!")
+                self.restart_game()  
             else:
                 self.get_player_input()
         else:
             print(f"Sorry, the word was {self.target_word.upper()}.")
+            self.restart_game()
+
+    
+    def restart_game(self):
+        global coloured_words_list
+        coloured_words_list = []
+        self.__init__()
+
+        players_choice = input("Would you like to play again? Y/N \n").upper()
+
+        if players_choice == "Y":
+            self.get_player_input()
+        elif players_choice == "N":
+            print("Thanks for playing. Good bye!")
+        else:
+            print("Please enter either y/Y or n/N")
+            self.restart_game()
 
 
 def display_intro():
