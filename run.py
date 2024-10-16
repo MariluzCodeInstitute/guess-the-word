@@ -139,7 +139,7 @@ def display_intro():
         "If any of the letters are present in the word but not "
         "in the right position, they will be yellow"
     )
-    print("If the letter is not in the word, it will not be coloured\n")
+    print("If the letter is not in the word, it will be grey\n")
     print("Good luck!")
 
 
