@@ -102,6 +102,9 @@ class Game:
 
     
     def restart_game(self):
+        """
+        Asks the player if they want to play again and resets variables
+        """
         global coloured_words_list
         coloured_words_list = []
         self.__init__()
