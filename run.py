@@ -1,22 +1,24 @@
 import random
-from word_list import word_list # Import the list of words for the game from word_list.py
+from word_list import word_list  # Import the list of words from word_list.py
 import nltk
 from nltk.corpus import words
 import colorama
 from colorama import Fore, Back, Style
 
 nltk.download('words')
-dictionary = set(words.words()) # Dictionary to verify English words
+dictionary = set(words.words())  # Dictionary to verify English words
 
 colorama.init(autoreset=True)
 
 coloured_words_list = []
 
+
 class Game:
     """
-    Game class that handles target word choice, user input, validations, checks and feedback
+    Game class that handles target word choice, user input,
+    validations, checks and feedback
     """
-    MAX_ATTEMPTS = 6 # This number will not change so it makes sense that is a constant
+    MAX_ATTEMPTS = 6  # This number will not change
 
     def __init__(self):
         """
@@ -26,7 +28,6 @@ class Game:
         self.attempt = 0
         self.guess_list = []
 
-    
     def get_player_input(self):
         """
         Asks the player to enter a word/guess and runs validations on it
@@ -35,29 +36,33 @@ class Game:
         player_guess = input("Enter a 5-letter word: ").strip().upper()
         self.validate_input(player_guess)
 
-
     def validate_input(self, guess):
         """
         Validates player's input and returns feedback accordingly
         """
         if len(guess) != 5:
-            print(f"Your word must be a 5-letter word. You provided a {len(guess)}-letter word. Please try again")
+            print(
+                f"Your word must be a 5-letter word. "
+                f"You provided a {len(guess)}-letter word. Please try again"
+            )
             self.get_player_input()
-        elif guess.isalpha() == False:
+        elif guess.isalpha() is False:
             print("Your word must contain only letters. Please try again.")
             self.get_player_input()
         elif guess.lower() not in dictionary:
             print(f"{guess} is not an English word. Please try again.")
             self.get_player_input()
         elif guess in self.guess_list:
-            print(f"You already tried the word {guess}. Please choose another word")
+            print(
+                f"You already tried the word {guess}. "
+                f"Please choose another word."
+            )
             self.get_player_input()
         else:
             print("Valid word!")
             self.guess_list.append(guess)
             self.update_game_state(guess)
 
-    
     def assign_colours(self, guess):
         """
         This function handles the colours that get assigned to each letter
@@ -67,15 +72,15 @@ class Game:
 
         for index, letter in enumerate(guess):
             if letter.lower() == self.target_word[index]:
-                coloured_word += f"{Back.GREEN}{letter}{Style.RESET_ALL} " 
+                coloured_word += f"{Back.GREEN}{letter}{Style.RESET_ALL} "
             elif letter.lower() in self.target_word:
                 coloured_word += f"{Back.YELLOW}{letter}{Style.RESET_ALL} "
             else:
-                coloured_word += f"{Back.LIGHTBLACK_EX}{letter}{Style.RESET_ALL} "
-
+                coloured_word += (
+                    f"{Back.LIGHTBLACK_EX}{letter}{Style.RESET_ALL} "
+                )
         return coloured_word
 
-        
     def update_game_state(self, guess):
         """
         This function gets the word coloured and send the guess for checking
@@ -86,24 +91,22 @@ class Game:
 
         for word in coloured_words_list:
             print(word)
-            print() # Printing extra line so that is easier to see
+            print()  # Printing extra line so that is easier to see
 
-        self.attempt +=1
+        self.attempt += 1
         self.check_guess(guess)
-
 
     def check_guess(self, guess):
         if self.attempt < self.MAX_ATTEMPTS:
             if guess.lower() == self.target_word:
                 print("Congratulations! Your guess is right!")
-                self.restart_game()  
+                self.restart_game()
             else:
                 self.get_player_input()
         else:
             print(f"Sorry, the word was {self.target_word.upper()}.")
             self.restart_game()
 
-    
     def restart_game(self):
         """
         Asks the player if they want to play again and resets variables
@@ -125,7 +128,7 @@ class Game:
 
 def display_intro():
     """
-    Diplays the welcome message and instructions for the game   
+    Diplays the welcome message and instructions for the game
     """
     print("Welcome to Guess The Word!\n")
     print("You have 6 attempts to guess a 5-letter word\n")
@@ -133,8 +136,8 @@ def display_intro():
         "On each attempt, if any of letters are in the right position, "
         "they will be green")
     print(
-        "If any of the letters are present in the word but not in the right position, "
-        "they will be yellow"
+        "If any of the letters are present in the word but not "
+        "in the right position, they will be yellow"
     )
     print("If the letter is not in the word, it will not be coloured\n")
     print("Good luck!")
@@ -147,5 +150,6 @@ def main():
     display_intro()
     game = Game()
     game.get_player_input()
+
 
 main()
