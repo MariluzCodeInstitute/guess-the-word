@@ -10,6 +10,7 @@ dictionary = set(words.words())
 colorama.init(autoreset=True)
 
 word_list = ['apple', 'baker', 'crane', 'delta', 'eagle'] # Small list for testing purposes
+coloured_words_list = []
 
 class Game:
     """
@@ -19,24 +20,10 @@ class Game:
 
     def __init__(self):
         self.target_word = random.choice(word_list)
-        self.grid = [['_' for _ in range(5)] for _ in range(self.MAX_ATTEMPTS)]
+        # self.grid = [['_' for _ in range(5)] for _ in range(self.MAX_ATTEMPTS)]
         self.attempt = 0
         self.guess_list = []
-    
-    def display_grid(self):
-        """
-        Function to display a 5x6 grid in the terminal
-        Code inspired from suggestions on StackOverflow:
-        https://stackoverflow.com/questions/77174842/how-to-print-a-grid-with-multiple-columns-in-the-terminal-using-for-loops
-        """
-        print("Guess The Word:\n")
-        # for row_index, row in enumerate(self.grid):
-        #     for col_index, letter in enumerate(row):
-        #         colour = colour_list[col_index]
-        #         print(f"{colour}{letter}{Style.RESET_ALL}")
 
-        for row in self.grid:
-            print(' '.join(row))
     
     def get_player_input(self):
         """
@@ -45,6 +32,7 @@ class Game:
         print(self.target_word)
         player_guess = input("Enter a 5-letter word: ").strip().upper()
         self.validate_input(player_guess)
+
 
     def validate_input(self, guess):
         """
@@ -66,8 +54,9 @@ class Game:
             print("Valid word!")
             self.guess_list.append(guess)
             self.update_game_state(guess)
+
     
-    def colour_and_print_word(self, guess):
+    def assign_colours(self, guess):
         """
         This function handles the colours that get assigned to each letter
         and prints the word to the terminal afterwards
@@ -76,43 +65,41 @@ class Game:
 
         for index, letter in enumerate(guess):
             if letter.lower() == self.target_word[index]:
-                # print(f"letter{letter} in index {index} green")
                 coloured_word += f"{Back.GREEN}{letter}{Style.RESET_ALL} " 
             elif letter.lower() in self.target_word:
-                # print(f"letter{letter} in index {index} yellow")
                 coloured_word += f"{Back.YELLOW}{letter}{Style.RESET_ALL} "
             else:
-                # print(f"letter{letter} in index {index} grey")
                 coloured_word += f"{Back.LIGHTBLACK_EX}{letter}{Style.RESET_ALL} "
 
-        print(coloured_word)
+        return coloured_word
 
         
     def update_game_state(self, guess):
         """
-        In this function we handle the colouring of the word, check the word
-        and give feedback to the user
+        This function gets the word coloured and send the guess for checking
         """
-        self.colour_and_print_word(guess)
+        global coloured_words_list
+        coloured_word = self.assign_colours(guess)
+        coloured_words_list.append(coloured_word)
+        # print(coloured_word)
+
+        for word in coloured_words_list:
+            print(word)
+            print()
 
         self.attempt +=1
-
         self.check_guess(guess)
 
-        if self.attempt < self.MAX_ATTEMPTS:
-            self.get_player_input()
-        else:
-            print(f"Sorry, the word was {self.target_word.upper()}.")
 
     def check_guess(self, guess):
-        if guess.lower() == self.target_word:
-            print("Congratulations! Your guess is right!")
-        else:
-            if self.attempt < self.MAX_ATTEMPTS:
-                self.get_player_input()
+        if self.attempt < self.MAX_ATTEMPTS:
+            if guess.lower() == self.target_word:
+                print("Congratulations! Your guess is right!")  
             else:
-                print(f"Sorry, the word was {self.target_word.upper()}.")
-
+                self.get_player_input()
+        else:
+            print(f"Sorry, the word was {self.target_word.upper()}.")
+            
 
 def display_intro():
     """
