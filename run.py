@@ -97,6 +97,9 @@ class Game:
         self.check_guess(guess)
 
     def check_guess(self, guess):
+        """
+        Check if the guess is correct and gives feedback
+        """
         if self.attempt <= self.MAX_ATTEMPTS and guess.lower() == self.target_word:
             print("Congratulations! Your guess is right!")
             self.restart_game()
