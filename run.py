@@ -32,7 +32,6 @@ class Game:
         """
         Asks the player to enter a word/guess and runs validations on it
         """
-        print(self.target_word)
         player_guess = input("Enter a 5-letter word: ").strip().upper()
         self.validate_input(player_guess)
 
