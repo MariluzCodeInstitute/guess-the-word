@@ -97,12 +97,11 @@ class Game:
         self.check_guess(guess)
 
     def check_guess(self, guess):
-        if self.attempt < self.MAX_ATTEMPTS:
-            if guess.lower() == self.target_word:
-                print("Congratulations! Your guess is right!")
-                self.restart_game()
-            else:
-                self.get_player_input()
+        if self.attempt <= self.MAX_ATTEMPTS and guess.lower() == self.target_word:
+            print("Congratulations! Your guess is right!")
+            self.restart_game()
+        elif self.attempt < self.MAX_ATTEMPTS:
+            self.get_player_input()
         else:
             print(f"Sorry, the word was {self.target_word.upper()}.")
             self.restart_game()
