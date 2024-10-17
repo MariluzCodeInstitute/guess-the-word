@@ -100,7 +100,10 @@ class Game:
         """
         Check if the guess is correct and gives feedback
         """
-        if self.attempt <= self.MAX_ATTEMPTS and guess.lower() == self.target_word:
+        if (
+            self.attempt <= self.MAX_ATTEMPTS
+            and guess.lower() == self.target_word
+        ):
             print("Congratulations! Your guess is right!")
             self.restart_game()
         elif self.attempt < self.MAX_ATTEMPTS:
