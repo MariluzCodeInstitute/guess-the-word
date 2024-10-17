@@ -1,8 +1,8 @@
-import random
+import random  # To choose a random word from the list
 from word_list import word_list  # Import the list of words from word_list.py
-import nltk
+import nltk  # Natural Language Toolkit
 from nltk.corpus import words
-import colorama
+import colorama  # To enable colours on the terminal
 from colorama import Fore, Back, Style
 
 nltk.download('words')
