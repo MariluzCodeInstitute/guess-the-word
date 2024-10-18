@@ -19,7 +19,7 @@ This project is designed to be both engaging and educational, perfect for word g
 
 - [Features](#features)
     - [Existing Features](#existing-features)
-    - [Future Features](#possible-future-features)
+    - [Future Features](#future-features)
 
 - [Data Model](#data-model)
 
@@ -119,4 +119,10 @@ As a player:
     ![Game over](assets/images/incorrect_guess.png)
 
 In both cases (winning or losing) the player is asked whether they want to play again or not
+
+### Future Features
+
+- Increasing difficulty: By either reducing the maximum number of attempts or increasing the word lenght. It would also be possible to create a list of trickier words to source the target word from.
+- Store player's progress: so that they know how many games they won and how many they lose. We could also display game statistics.
+- Multiplayer mode: two or more players can take turns at guessing the same word in real time with the one who guesses the word in fewer attempts being the winner
 
