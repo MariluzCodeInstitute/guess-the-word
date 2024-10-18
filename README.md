@@ -95,4 +95,9 @@ As a player:
     ![Wrong number of letters feedback](assets/images/wrong_number_letters.png)
 
 - Colour-coded feedback on each word:
-    
+    As in the original Wordle game, here the player gets feedback on every word so that they can improve their guess next time
+    ![Colour-coded feedback yellow](assets/images/colour_feedback1.png)
+
+    ![Colour-coded feedback grey](assets/images/colour_feedback2.png)
+
+    ![Colour-coded feedback mix](assets/images/colour_feedback3.png)
