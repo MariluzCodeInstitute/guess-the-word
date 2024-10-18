@@ -76,28 +76,47 @@ As a player:
 
 - Introduction and rules
     - Includes a brief explanation of how to play the game
+
     ![Intro and instructions](assets/images/game_instructions.png)
 
 - Player's input
     - Here the player can type their word/guess
+
     ![Player's input](assets/images/players_input.png)
 
 - Error handling:
     If the player enters a word that does not follow the rules, clear feedback is displayed and the player is prompted to enter a new word
 
     - Only letters are accepted:
+
     ![Only letters feedback](assets/images/only_letters_feedback.png)
 
     - Only English words are accepted:
+
     ![Only English words feedback](assets/images/english_words_feedback.png)
 
     - Only 5-letter words are accepted (empty input will trigger this error too):
+
     ![Wrong number of letters feedback](assets/images/wrong_number_letters.png)
 
 - Colour-coded feedback on each word:
     As in the original Wordle game, here the player gets feedback on every word so that they can improve their guess next time
+
     ![Colour-coded feedback yellow](assets/images/colour_feedback1.png)
 
     ![Colour-coded feedback grey](assets/images/colour_feedback2.png)
 
     ![Colour-coded feedback mix](assets/images/colour_feedback3.png)
+
+- Winning the game:
+    The game displays a message to the player when they guess the word correctly
+
+    ![Correct guess](assets/images/correct_guess.png)
+
+- Losing the game:
+    The game displays a message when the player runs out of attempts to guess the word and loses the game
+
+    ![Game over](assets/images/incorrect_guess.png)
+
+In both cases (winning or losing) the player is asked whether they want to play again or not
+
