@@ -133,3 +133,15 @@ This class also handles getting the input from the user and validating it. It as
 
 Outside of the Game class we have a function to display the intro message and the instructions for the game, and the `main` function that runs the entire application.
 
+## Testing
+
+### Validator Testing
+
+The entire code on `run.py` has been passed through a Python linter (PEP8) returning no errors or warnings (see screenshot below)
+
+![Python validator](assets/images/python_validator.png)
+
+Lighthouse validator has also been run on the app with the following results:
+
+![Lighthouse validator](assets/images/lighthouse_validator.png)
+
