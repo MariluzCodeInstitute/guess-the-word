@@ -128,3 +128,8 @@ In both cases (winning or losing) the player is asked whether they want to play 
 
 ## Data Model
 
+This application has a Game class that contains most of the logic to run the game. Firstly, there is a constructor that creates instances for the target word, sets the initial value of attempt, and the initial value of the guess_list.
+This class also handles getting the input from the user and validating it. It assigns the colours to each letter of the player's guess, check whether the guess is correct and update the state of the game accordingly. Finally, this class also handles restarting the game should the player wish to.
+
+Outside of the Game class we have a function to display the intro message and the instructions for the game, and the `main` function that runs the entire application.
+
