@@ -126,3 +126,5 @@ In both cases (winning or losing) the player is asked whether they want to play 
 - Store player's progress: so that they know how many games they won and how many they lose. We could also display game statistics.
 - Multiplayer mode: two or more players can take turns at guessing the same word in real time with the one who guesses the word in fewer attempts being the winner
 
+## Data Model
+

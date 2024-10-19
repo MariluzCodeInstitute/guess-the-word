@@ -39,28 +39,36 @@ class Game:
         """
         Validates player's input and returns feedback accordingly
         """
-        if len(guess) != 5:
-            print(
-                f"Your word must be a 5-letter word. "
-                f"You provided a {len(guess)}-letter word. Please try again"
-            )
-            self.get_player_input()
-        elif guess.isalpha() is False:
-            print("Your word must contain only letters. Please try again.")
-            self.get_player_input()
-        elif guess.lower() not in dictionary:
-            print(f"{guess} is not an English word. Please try again.")
-            self.get_player_input()
-        elif guess in self.guess_list:
-            print(
-                f"You already tried the word {guess}. "
-                f"Please choose another word."
-            )
-            self.get_player_input()
-        else:
+        try:
+            # Check if guess is exactly 5 letters long
+            if len(guess) != 5:
+                raise ValueError(
+                    f"Your word must be a 5-letter word. "
+                    f"You provided a {len(guess)}-letter word. Please try again."
+                )
+            
+            # Check if guess contains only alphabetic characters
+            if not guess.isalpha():
+                raise ValueError("Your word must contain only letters. Please try again.")
+            
+            # Check if guess is a valid English word from the dictionary
+            if guess.lower() not in dictionary:
+                raise ValueError(f"{guess} is not an English word. Please try again.")
+            
+            # Check if guess has already been used
+            if guess in self.guess_list:
+                raise ValueError(
+                    f"You already tried the word {guess}. Please choose another word."
+                )
+
+            # If all checks pass, the word is valid
             print("Valid word!")
             self.guess_list.append(guess)
             self.update_game_state(guess)
+        
+        except ValueError as e:
+            print(e)
+            self.get_player_input()
 
     def assign_colours(self, guess):
         """
