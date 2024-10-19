@@ -44,28 +44,34 @@ class Game:
             if len(guess) != 5:
                 raise ValueError(
                     f"Your word must be a 5-letter word. "
-                    f"You provided a {len(guess)}-letter word. Please try again."
+                    f"You provided a {len(guess)}-letter word. "
+                    f"Please try again."
                 )
-            
+
             # Check if guess contains only alphabetic characters
             if not guess.isalpha():
-                raise ValueError("Your word must contain only letters. Please try again.")
-            
+                raise ValueError(
+                    "Your word must contain only letters. Please try again."
+                )
+
             # Check if guess is a valid English word from the dictionary
             if guess.lower() not in dictionary:
-                raise ValueError(f"{guess} is not an English word. Please try again.")
-            
+                raise ValueError(
+                    f"{guess} is not an English word. Please try again."
+                )
+
             # Check if guess has already been used
             if guess in self.guess_list:
                 raise ValueError(
-                    f"You already tried the word {guess}. Please choose another word."
+                    f"You already tried the word {guess}. "
+                    f"Please choose another word."
                 )
 
             # If all checks pass, the word is valid
             print("Valid word!")
             self.guess_list.append(guess)
             self.update_game_state(guess)
-        
+
         except ValueError as e:
             print(e)
             self.get_player_input()
