@@ -145,3 +145,19 @@ Lighthouse validator has also been run on the app with the following results:
 
 ![Lighthouse validator](assets/images/lighthouse_validator.png)
 
+## Debugging
+
+### Fixed bugs
+
+While working on this project, I encountered a few issues and bugs that I needed to solve:
+- Getting the word to display the right colours with Colorama took me several attempts and the use of Internet resources such as blog posts, StackOverflow and tutorials.
+- On the `check_guess` function at first, when the player entered the right word on the last attempt the game was returning the 'sorry' message and revealing what the target word was, instead of congratulating the player for winning the game. I realised that on my if/elif conditional I had `self.attempt < self.MAX_ATTEMPTS`. When I added a `<=` (less or equal to) that bug got fixed but another bug appeared, in which after the 6th attempt and no correct answer, the game was prompting the player for another word. For this reason, I had to break the conditional and add one more statement: `elif self.attempt < self.MAX_ATTEMPTS:` to handle those cases in which on the last attempt the player does not guess the word correctly but the game should not prompt for another guess.
+
+### Unfixed bugs
+
+There is currently an issue when a player enters a guess that contains more than one of the same letter. In these cases those letters will be coloured even if only one is in the target word. 
+
+Example: The target word is 'shame'. The player enters the word 'glass'. Since 'glass' has a double 's', both 's' letters will be coloured yellow even though the target word only contains one 's'.
+
+I tried to solve this bug by adding extra code on the `assign_colours` function to check the number of occurrences of a letter in the target word. It became too complex very quickly and the existing functionality started to fail too. I was not able to make this code work and I was running out of time, so I decided to rollback the changes and document this bug in the README
+
