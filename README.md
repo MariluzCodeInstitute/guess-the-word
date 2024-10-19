@@ -175,3 +175,12 @@ This project was created using the [Code Institute p3 template](https://github.c
 8. Search for the repository on GitHub and click connect
 9. Choose either manual or automatic deployments and click to deploy
 
+## Credits
+
+### Data
+
+### Code
+
+### Styling
+
+
