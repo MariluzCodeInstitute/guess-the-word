@@ -161,3 +161,17 @@ Example: The target word is 'shame'. The player enters the word 'glass'. Since '
 
 I tried to solve this bug by adding extra code on the `assign_colours` function to check the number of occurrences of a letter in the target word. It became too complex very quickly and the existing functionality started to fail too. I was not able to make this code work and I was running out of time, so I decided to rollback the changes and document this bug in the README
 
+### Deployment
+
+This project was created using the [Code Institute p3 template](https://github.com/Code-Institute-Org/p3-template) which is design to run in a mock terminal. The project is deployed on Heroku following these steps:
+
+1. Create an account on Heroku and log in
+2. On the dashboard, click on Create New App
+3. Enter the app name (must be unique) and the region for deployment
+4. Go inside the newly created app on Heroku and click on Settings
+5. Config vars -> Add a new config var with key `PORT` and value `8000`
+6. Add buildpack -> Select Python, save and then select NodeJs and save (in that specific order)
+7. On the Deploy tab, select GitHub and connect
+8. Search for the repository on GitHub and click connect
+9. Choose either manual or automatic deployments and click to deploy
+
